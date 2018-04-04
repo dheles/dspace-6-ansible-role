@@ -56,10 +56,10 @@
     become_user: "{{ dspace_user }}"
   when: build_from_repo
 
-- name: build properties
+- name: local configuration
   template:
-    src: "{{ dspace_build_properties_template }}"
-    dest: "{{ dspace_source }}/build.properties"
+    src: "{{ dspace_local_config_template }}"
+    dest: "{{ dspace_source }}/dspace/config/local.cfg"
     owner: "{{ dspace_user }}"
     group: "{{ dspace_group }}"
     backup: true

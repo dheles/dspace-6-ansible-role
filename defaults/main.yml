@@ -51,7 +51,8 @@ dspace_source:        "{{ dspace_user_home }}/{{ dspace_source_dir }}"
 # TODO: review, with an eye toward always building from release
 # and automating customizations (thus removing need for a repo)
 build_from_repo: false
-dspace_build_properties_template: "build.properties.j2"
+# dspace_build_properties_template: "build.properties.j2"
+dspace_local_config_template:     "local.cfg.j2"
 # to install from a repo: (you'd probably override this with your own fork)
 repo: "https://github.com/DSpace/DSpace.git"
 branch: "dspace-{{ dspace_version }}"
