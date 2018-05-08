@@ -106,3 +106,7 @@ dspace_backup_dir:                "{{ dspace_user_home }}/backup"
 dspace_backup_default_assetstore: true
 dspace_backup_configuration:      true
 dspace_backup_statistics:         true
+
+# authentication vars
+dspace_auth_password:             true
+dspace_auth_shib:                 false
