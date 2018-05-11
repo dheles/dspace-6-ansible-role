@@ -155,7 +155,7 @@ registration.notify = ${mail.admin}
 # after registering with handle.net by uncommenting one of the following
 # lines, depending if you prefer to use http or https:
 # handle.canonical.prefix = http://hdl.handle.net/
-# handle.canonical.prefix = ${dspace.url}/handle/
+handle.canonical.prefix = {{ dspace_handle_canonical_prefix }}
 #
 # Note that this will not alter dc.identifer.uri metadata for existing
 # items (only for subsequent submissions), but it will alter the URL
