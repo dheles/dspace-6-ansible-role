@@ -19,9 +19,20 @@
     state: restarted
   become: true
 
-- name: update local configs
-  debug:
-    msg: "...restarting tomcat to apply config changes"
+- name: maven package updates
+  become: true
+  become_user: "{{ app_user }}"
+  shell: "source /etc/profile && mvn package -Dmirage2.on=true -Dmirage2.deps.included=false"
+  args:
+    chdir: "{{ dspace_source }}/dspace"
+  listen: update configs
+
+- name: ant update configs
+  become: true
+  become_user: "{{ app_user }}"
+  shell: "source /etc/profile && ant update_configs"
+  args:
+    chdir: "{{ dspace_source }}/dspace/target/dspace-installer"
   listen: update configs
   notify: restart tomcat
 
