@@ -30,6 +30,7 @@ dspace_mail_admin:  "admin@{{ dspace_fqdn }}"
 dspace_use_alt_theme: true
 dspace_theme_name: "Mirage 2"
 dspace_theme_path: "Mirage2"
+dspace_theme_flag: "-Dmirage2.on=true -Dmirage2.deps.included=false"
 # dspace_full_theme_path: "{{ dspace_install }}/webapps/xmlui/themes/{{ dspace_theme_path }}"
 
 # user vars
@@ -41,7 +42,7 @@ dspace_group_gid: "{{ app_group_gid | default(omit) }}"
 # vars for building and installing dspace:
 # ---------------------------------
 dspace_major_version: 6
-dspace_minor_version: 2
+dspace_minor_version: 3
 dspace_version:       "{{ dspace_major_version }}.{{ dspace_minor_version }}"
 dspace_install_dir:   "/opt"
 dspace_install:       "{{ dspace_install_dir }}/dspace"
@@ -59,6 +60,9 @@ branch: "dspace-{{ dspace_version }}"
 # to install from a release:
 release_dir: "{{ dspace_source_dir }}-src-release" # appended to dspace_source_dir, if needed
 release: "https://github.com/DSpace/DSpace/releases/download/dspace-{{ dspace_version }}/{{ release_dir }}.tar.gz"
+dspace_build_errors:    false
+dspace_build_debugging: false
+dspace_build_theme:     true
 
 # deployment vars
 # ---------------

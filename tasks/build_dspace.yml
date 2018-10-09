@@ -79,9 +79,27 @@
       line:   "        <theme name=\"{{ dspace_theme_name }}\" regex=\".*\" path=\"{{ dspace_theme_path }}/\" />"
   when: dspace_use_alt_theme
 
+- name: set build flags
+  set_fact:
+    build_flags: ""
+    error_flag: ""
+    debugging_flag: ""
+    theme_flag: ""
+- set_fact:
+    theme_flag: "{{ dspace_theme_flag }}"
+  when: dspace_build_theme
+- set_fact:
+    error_flag: "-e"
+  when: dspace_build_errors
+- set_fact:
+    debugging_flag: "-X"
+  when: dspace_build_debugging
+- set_fact:
+    build_flags: "{{ [error_flag, debugging_flag, theme_flag] | join(' ') }}"
+
 - name: maven package
   become: true
   become_user: "{{ dspace_user }}"
-  shell: "source /etc/profile && mvn clean package -Dmirage2.on=true -Dmirage2.deps.included=false"
+  shell: "source /etc/profile && mvn clean package {{ build_flags }}"
   args:
     chdir: "{{ dspace_source }}"
