@@ -24,7 +24,7 @@ pgbin: ""
 
 # mail vars
 dspace_mail_server: "smtp.{{ dspace_fqdn }}"
-dspace_mail_admin:  "admin@{{ dspace_fqdn }}"
+dspace_mail_admin:  "{{ dspace_hostname }}-help@{{ dspace_domain }}"
 
 # theme settings
 dspace_use_alt_theme: true
